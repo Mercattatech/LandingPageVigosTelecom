@@ -1,123 +1,166 @@
-import { Phone, Send, Award, Users, Briefcase } from "lucide-react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { useState } from "react";
-import vigosLogo from "figma:asset/ac4dbebbc389b3a989fdeb433304f09f7ea0026c.png";
-import vigosImage from "../../../imports/IMG_2128.png";
+import { ArrowRight, Pause, Play, Volume2, VolumeX, Sparkles, CheckCircle2 } from "lucide-react";
+
+// Official WhatsApp Vector Icon
+function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M17.472 14.382c-.301-.15-1.781-.879-2.057-.98-.276-.1-.476-.15-.676.15-.2.301-.776.98-.952 1.181-.175.201-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.675-2.085-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.1-.201.05-.376-.025-.526-.075-.15-.676-1.63-0.927-2.232-.244-.587-.492-.507-.676-.516l-.577-.01c-.2 0-.526.075-.802.376-.276.301-1.053 1.028-1.053 2.508 0 1.48 1.078 2.909 1.228 3.11.15.201 2.122 3.24 5.14 4.544.718.31 1.279.495 1.716.634.721.23 1.378.197 1.897.12.578-.087 1.781-.728 2.032-1.43.25-.702.25-1.304.175-1.43-.075-.125-.276-.2-.577-.351z" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 21.95l4.908-1.353A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.182a8.136 8.136 0 01-4.32-1.232l-.31-.188-2.91.803.803-2.836-.206-.328A8.148 8.148 0 013.818 12c0-4.51 3.672-8.182 8.182-8.182 4.51 0 8.182 3.672 8.182 8.182 0 4.51-3.672 8.182-8.182 8.182z" />
+    </svg>
+  );
+}
 
 export function HeroLPSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    whatsapp: "",
-    email: ""
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Lead capturado:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", company: "", whatsapp: "", email: "" });
-      setSubmitted(false);
-    }, 3000);
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById("formulario-contato") || document.getElementById("final-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/5514991046715?text=Olá! Gostaria de falar com um especialista sobre o VigosCloud.", "_blank");
+  };
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
   };
 
   return (
-    <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center overflow-hidden">
-      {/* Tech Background with Overlay */}
+    <section className="relative w-full min-h-screen lg:min-h-[750px] overflow-hidden bg-black flex items-center pt-24 pb-16">
+      
+      {/* Full-Screen Background Video in Loop with Cinematic Dark Filter */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <iframe
+          src={`https://iframe.mediadelivery.net/embed/602706/a4cf74e4-60fe-4282-8068-bfa894aee905?autoplay=true&loop=true&muted=${isMuted ? "true" : "false"}&preload=true&responsive=true`}
+          loading="eager"
+          title="Vigos Telecom Hero Video"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] object-cover pointer-events-none transition-all duration-700"
+          style={{ 
+            border: "none",
+            filter: "brightness(0.72) contrast(1.1)"
+          }}
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+          allowFullScreen={true}
+        />
+      </div>
+
+      {/* Modern Gradient Overlays for Extreme Contrast and Readability */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 pointer-events-none z-[1]"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1599949104055-2d04026aee1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhY2VudGVyJTIwbmV0d29yayUyMGluZnJhc3RydWN0dXJlfGVufDF8fHx8MTc3MTg1MTMzNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`,
-          filter: 'blur(3px) brightness(0.4)',
+          background: "linear-gradient(135deg, rgba(6, 10, 16, 0.88) 0%, rgba(6, 10, 16, 0.65) 50%, rgba(6, 10, 16, 0.85) 100%)"
         }}
       />
-      
-      {/* Gradient Overlay */}
+
+      {/* Ambient Neon Accent Glow */}
       <div 
-        className="absolute inset-0" 
-        style={{ 
-          background: `linear-gradient(135deg, var(--vigos-blue-deep) 0%, var(--vigos-blue-dark) 50%, var(--vigos-blue-primary) 100%)`,
-          opacity: 0.95
-        }} 
+        className="absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full blur-[160px] opacity-20 pointer-events-none z-[2]"
+        style={{ background: "var(--vigos-green-accent)" }}
       />
 
-      {/* Tech Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%">
-          <pattern id="techPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-            <circle cx="50" cy="50" r="1.5" fill="white" opacity="0.3"/>
-            <line x1="50" y1="50" x2="100" y2="50" stroke="white" strokeWidth="0.5" opacity="0.2"/>
-            <line x1="50" y1="50" x2="50" y2="100" stroke="white" strokeWidth="0.5" opacity="0.2"/>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#techPattern)"/>
-        </svg>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Headlines & Trust Signals */}
-          <div className="text-white">
-            
-            
-            <h1 className="text-4xl lg:text-6xl mb-6 leading-tight">
-              Sua comunicação precisa acompanhar o ritmo do seu negócio
-            </h1>
-            
-            <p className="text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
-              VigosCloud: PABX em nuvem com relatórios personalizados, integração com CRM e ERP, e controle total da sua operação
-            </p>
-
-            {/* Trust Metrics */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t" style={{ borderColor: 'var(--vigos-tech-lines)' }}>
-              <div className="flex items-center gap-3">
-                <Award className="h-8 w-8" style={{ color: 'var(--vigos-green-accent)' }} />
-                <div>
-                  <div className="text-2xl">15+</div>
-                  <div className="text-sm opacity-75">anos de experiência</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Users className="h-8 w-8" style={{ color: 'var(--vigos-green-accent)' }} />
-                <div>
-                  <div className="text-2xl">600+</div>
-                  <div className="text-sm opacity-75">clientes ativos</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Briefcase className="h-8 w-8" style={{ color: 'var(--vigos-green-accent)' }} />
-                <div>
-                  <div className="text-2xl">1.898</div>
-                  <div className="text-sm opacity-75">projetos</div>
-                </div>
-              </div>
-            </div>
+      {/* Main Hero Content: Chamada + Call to Action */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full">
+        <div className="max-w-3xl space-y-6 sm:space-y-8">
+          
+          {/* Tag Badge */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#0C121E]/90 border border-[#9ACB3B]/40 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-[#9ACB3B] animate-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[#9ACB3B] font-bold">
+              VigosCloud • Telefonia em Nuvem B2B
+            </span>
           </div>
 
-          {/* Right: Lead Form */}
-          <div>
-            <div
-              className="rounded-3xl overflow-hidden shadow-2xl"
+          {/* Chamada Principal (Headline) */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+            Sua comunicação precisa acompanhar o{" "}
+            <span 
+              className="inline-block"
               style={{
-                border: '2px solid var(--vigos-tech-lines)'
+                background: "linear-gradient(135deg, #ffffff 40%, var(--vigos-green-accent) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              <img
-                src={vigosImage}
-                alt="Vigos Soluções em Telecomunicações"
-                className="w-full h-auto"
-              />
-            </div>
+              ritmo do seu negócio.
+            </span>
+          </h1>
+
+          {/* Subchamada */}
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed font-sans max-w-2xl">
+            PABX 100% em nuvem com relatórios em tempo real, gravação de chamadas, integração nativa com CRM/ERP e controle operacional absoluto para sua empresa.
+          </p>
+
+          {/* Quick Feature Pills */}
+          <div className="flex flex-wrap gap-2.5 pt-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 bg-white/5 border border-white/15 text-gray-200">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACB3B]" /> URA Inteligente & Gravação
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 bg-white/5 border border-white/15 text-gray-200">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACB3B]" /> Integração Nativa CRM/ERP
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 bg-white/5 border border-white/15 text-gray-200">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACB3B]" /> Suporte Técnico NOC 24/7
+            </span>
           </div>
+
+          {/* Buttons: Primary Form CTA + WhatsApp CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-4 font-mono">
+            {/* Primary Call to Action Button */}
+            <button
+              onClick={handleScrollToForm}
+              className="px-8 py-4 sm:py-5 bg-[#9ACB3B] text-[#070A0F] text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 hover:brightness-110 shadow-[0_0_35px_rgba(154,203,59,0.5)] active:scale-95 flex items-center justify-center gap-3 cursor-pointer group"
+            >
+              <span>Solicitar Diagnóstico Gratuito</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Secondary WhatsApp Button */}
+            <button
+              onClick={handleWhatsApp}
+              className="px-6 py-4 sm:py-5 bg-black/60 backdrop-blur-md border border-white/25 text-white hover:border-[#25D366] hover:text-[#25D366] text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer"
+            >
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+              <span>Falar no WhatsApp</span>
+            </button>
+          </div>
+
         </div>
       </div>
+
+      {/* Floating Bottom Video Controls */}
+      <div className="absolute bottom-6 right-4 sm:right-8 z-20 hidden sm:flex items-center gap-2">
+        <button
+          onClick={togglePlay}
+          aria-label="Pausar ou Reproduzir Vídeo"
+          className="w-10 h-10 bg-black/70 backdrop-blur-md border border-white/20 text-white hover:border-[#9ACB3B] hover:text-[#9ACB3B] transition-colors flex items-center justify-center cursor-pointer"
+        >
+          {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
+        </button>
+
+        <button
+          onClick={toggleMute}
+          aria-label="Mutar ou Desmutar Áudio"
+          className="h-10 px-3 bg-black/70 backdrop-blur-md border border-white/20 text-white font-mono text-[11px] font-semibold uppercase tracking-widest hover:border-[#9ACB3B] hover:text-[#9ACB3B] transition-colors flex items-center gap-1.5 cursor-pointer"
+        >
+          {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/70" /> : <Volume2 className="w-3.5 h-3.5 text-[#9ACB3B]" />}
+          <span>{isMuted ? "MUTE" : "AUDIO"}</span>
+        </button>
+      </div>
+
     </section>
   );
 }

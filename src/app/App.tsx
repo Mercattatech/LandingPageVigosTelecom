@@ -1,50 +1,54 @@
+import { HeaderLP } from "./components/vigoscloud/HeaderLP";
 import { HeroLPSection } from "./components/vigoscloud/HeroLPSection";
+import { ClientsMarquee } from "./components/vigoscloud/ClientsMarquee";
 import { PainPointsSection } from "./components/vigoscloud/PainPointsSection";
 import { VigosCloudShowcase } from "./components/vigoscloud/VigosCloudShowcase";
 import { BenefitsSection } from "./components/vigoscloud/BenefitsSection";
-import { SocialProofSection } from "./components/vigoscloud/SocialProofSection";
-import { SegmentsSection } from "./components/vigoscloud/SegmentsSection";
 import { WhyVigosSection } from "./components/vigoscloud/WhyVigosSection";
+import { SegmentsSection } from "./components/vigoscloud/SegmentsSection";
 import { CTASection } from "./components/vigoscloud/CTASection";
 import { FinalFormSection } from "./components/vigoscloud/FinalFormSection";
 import { FooterLP } from "./components/vigoscloud/FooterLP";
-import { HeaderLP } from "./components/vigoscloud/HeaderLP";
+import { WhatsAppSDRFlow } from "./components/vigoscloud/WhatsAppSDRFlow";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header com Logo */}
+    <div className="min-h-screen bg-[#060A10] font-sans antialiased text-white selection:bg-[#9ACB3B] selection:text-[#060A10] relative">
+      {/* 1. Header com Logo, Relógio e CTAs Studio */}
       <HeaderLP />
       
-      {/* VigosCloud Showcase - Solução Principal */}
-      <VigosCloudShowcase />
-
-      {/* Pain Points - Identificação */}
-      <PainPointsSection />
-
-      {/* Hero with Lead Form */}
+      {/* 2. Hero Section 100% Full-Screen Video em Loop com Controles Flutuantes */}
       <HeroLPSection />
       
-      {/* Benefits - Resultados */}
+      {/* 3. Faixa Interativa de Clientes - Marquee Infinito */}
+      <ClientsMarquee />
+
+      {/* 4. Pain Points - Diagnóstico e Desafios */}
+      <PainPointsSection />
+
+      {/* 4. VigosCloud Showcase - Command Center e Telemetria em Tempo Real */}
+      <VigosCloudShowcase />
+      
+      {/* 5. Benefits - Vantagens Competitivas */}
       <BenefitsSection />
-      
-      {/* Social Proof - Autoridade */}
-      <SocialProofSection />
-      
-      {/* Segments - Mercados B2B */}
-      <SegmentsSection />
-      
-      {/* Why Vigos - Diferenciais */}
+
+      {/* 6. Why Vigos - Diferenciais de Engenharia */}
       <WhyVigosSection />
       
-      {/* CTA Intermediário */}
+      {/* 8. Segments - Verticais Atendidas */}
+      <SegmentsSection />
+      
+      {/* 9. CTA Intermediário */}
       <CTASection />
       
-      {/* Final Form - Conversão */}
+      {/* 10. Formulário Dedicado para Diagnóstico e Proposta */}
       <FinalFormSection />
       
-      {/* Footer */}
+      {/* 11. Footer Studio */}
       <FooterLP />
+
+      {/* 12. Floating WhatsApp SDR Conversational Flow Widget */}
+      <WhatsAppSDRFlow />
     </div>
   );
 }

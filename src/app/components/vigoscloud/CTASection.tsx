@@ -1,83 +1,66 @@
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, Terminal } from "lucide-react";
 import { Button } from "../ui/button";
 
 export function CTASection() {
   const handleContactCTA = () => {
-    const finalForm = document.getElementById('final-form');
-    finalForm?.scrollIntoView({ behavior: 'smooth' });
+    const finalForm = document.getElementById("formulario-contato") || document.getElementById("final-form");
+    finalForm?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleWhatsAppCTA = () => {
-    window.open('https://wa.me/5514991234567?text=Olá! Gostaria de conhecer o VigosCloud', '_blank');
+    window.open("https://wa.me/5514991046715?text=Olá! Gostaria de conhecer o VigosCloud", "_blank");
   };
 
   return (
-    <section 
-      className="py-24 relative overflow-hidden"
-      style={{ 
-        background: 'linear-gradient(135deg, var(--vigos-green-accent) 0%, #7DA32E 100%)'
-      }}
-    >
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, var(--vigos-blue-deep) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}/>
-      </div>
-
-      {/* Glow Effects */}
+    <section className="py-24 bg-[#070B12] relative overflow-hidden text-white border-t border-b border-white/10">
+      
+      {/* Background Neon Lighting */}
       <div 
-        className="absolute top-1/2 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30"
-        style={{ background: 'var(--vigos-blue-dark)' }}
-      />
-      <div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-30"
-        style={{ background: 'var(--vigos-blue-primary)' }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] rounded-full blur-[160px] opacity-20 pointer-events-none"
+        style={{ background: "var(--vigos-green-accent)" }}
       />
 
-      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-4xl lg:text-6xl mb-6 leading-tight" style={{ color: 'var(--vigos-blue-deep)' }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center relative z-10">
+        
+        <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#9ACB3B] mb-6 px-4 py-1.5 bg-[#9ACB3B]/10 border border-[#9ACB3B]/30">
+          <Terminal className="w-4 h-4 text-[#9ACB3B]" />
+          Transformação Digital
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
           Pronto para modernizar a comunicação da sua empresa?
         </h2>
 
-        <p className="text-xl lg:text-2xl mb-10 opacity-90" style={{ color: 'var(--vigos-blue-dark)' }}>
-          Fale com nossos especialistas e descubra como o VigosCloud pode transformar seus resultados
+        <p className="text-base sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-sans leading-relaxed">
+          Fale agora com nossos consultores técnicos e receba um diagnóstico sem compromisso para sua operação.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-mono">
           <Button 
             onClick={handleContactCTA}
             size="lg"
-            className="w-full sm:w-auto rounded-full px-10 py-7 h-auto text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+            className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-10 rounded-none text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 hover:brightness-110 shadow-[0_0_35px_rgba(154,203,59,0.4)] flex items-center justify-center gap-3 cursor-pointer group"
             style={{ 
-              backgroundColor: 'var(--vigos-blue-deep)',
-              color: 'white',
-              border: 'none'
+              backgroundColor: "var(--vigos-green-accent)",
+              color: "#070A0F",
+              border: "none"
             }}
           >
-            Receber contato da Vigos
-            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            <span>Receber Contato da Vigos</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
 
           <Button 
             onClick={handleWhatsAppCTA}
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto rounded-full px-10 py-7 h-auto text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
-            style={{ 
-              backgroundColor: 'white',
-              color: 'var(--vigos-blue-deep)',
-              borderColor: 'var(--vigos-blue-deep)',
-              borderWidth: '2px'
-            }}
+            className="w-full sm:w-auto h-14 sm:h-16 px-8 sm:px-10 rounded-none text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300 hover:bg-white/10 border-white/30 text-white flex items-center justify-center gap-3 cursor-pointer"
           >
-            <MessageCircle className="mr-2 h-6 w-6 group-hover:scale-110 transition-transform" />
-            Falar no WhatsApp
+            <MessageCircle className="w-4 h-4 text-[#9ACB3B]" />
+            <span>Falar no WhatsApp</span>
           </Button>
         </div>
 
-        
       </div>
     </section>
   );

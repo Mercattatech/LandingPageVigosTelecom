@@ -1,98 +1,98 @@
-import { Building2, HardHat, FileText, Home } from "lucide-react";
+import { Building2, HardHat, FileText, Home, ArrowUpRight } from "lucide-react";
 
 const segments = [
   {
     icon: Building2,
-    title: "Empresas, indústrias e comércio",
-    description: "Soluções completas de comunicação para empresas de todos os portes, com foco em performance e escalabilidade"
+    code: "SEC_01",
+    title: "Empresas, Indústrias e Comércio",
+    description: "Comunicação corporativa unificada, gestão de múltiplos ramais e controle de atendimento para pequenas, médias e grandes empresas."
   },
   {
     icon: HardHat,
-    title: "Projetos de infraestrutura",
-    description: "Planejamento e implementação de projetos complexos de telecomunicações com as melhores práticas do mercado"
+    code: "SEC_02",
+    title: "Projetos de Infraestrutura e Redes",
+    description: "Engenharia de telecomunicações, cabeamento estruturado, interligação de filiais (VPN/MPLS) e links dedicados de alta disponibilidade."
   },
   {
     icon: FileText,
-    title: "Consultoria de projetos",
-    description: "Análise especializada e consultoria técnica para otimizar sua infraestrutura de comunicação corporativa"
+    code: "SEC_03",
+    title: "Consultoria e Auditoria em Telecom",
+    description: "Diagnóstico completo da sua conta e infraestrutura atual para redução de custos e modernização tecnológica sem desperdício."
   },
   {
     icon: Home,
-    title: "Residências e condomínios",
-    description: "Internet de alta velocidade e conectividade estável para residências e grandes condomínios"
+    code: "SEC_04",
+    title: "Condomínios e Empreendimentos",
+    description: "Interfonia em nuvem, controle de acesso e conectividade por fibra óptica para grandes condomínios residenciais e empresariais."
   }
 ];
 
 export function SegmentsSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl mb-4" style={{ color: 'var(--vigos-blue-dark)' }}>
-            Segmentos que atendemos
-          </h2>
-          <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Expertise em telecomunicações para diversos setores da economia
+    <section className="py-28 bg-[#05080E] relative overflow-hidden text-white border-t border-white/10">
+      
+      {/* Background Lighting */}
+      <div 
+        className="absolute top-1/2 left-0 w-96 h-96 rounded-full blur-[140px] opacity-10 pointer-events-none"
+        style={{ background: "var(--vigos-blue-primary)" }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+          <div>
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#9ACB3B] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#9ACB3B]" />
+              Verticais de Atuação
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              Soluções sob medida para o seu setor
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-gray-400 max-w-md font-sans">
+            Experiência comprovada em múltiplos segmentos da economia com arquiteturas personalizadas.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Segments Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
           {segments.map((segment, index) => {
             const Icon = segment.icon;
             return (
-              <div 
+              <div
                 key={index}
-                className="relative group"
+                className="group p-8 bg-[#0C121E]/90 border border-white/10 hover:border-[#9ACB3B]/60 transition-all duration-500 flex flex-col justify-between"
               >
-                <div 
-                  className="h-full p-8 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
-                  style={{ 
-                    background: 'white',
-                    border: '2px solid #E5E7EB'
-                  }}
-                >
-                  {/* Hover Border Glow */}
-                  <div 
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ 
-                      boxShadow: '0 0 40px rgba(154, 203, 59, 0.3)',
-                      borderImage: 'linear-gradient(135deg, var(--vigos-blue-primary), var(--vigos-green-accent)) 1'
-                    }}
-                  />
-
-                  <div className="flex gap-6 relative">
-                    <div 
-                      className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                      style={{ 
-                        background: 'linear-gradient(135deg, var(--vigos-blue-primary), var(--vigos-blue-dark))'
-                      }}
-                    >
-                      <Icon className="h-8 w-8 text-white" />
+                <div>
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center text-white/80 group-hover:text-[#9ACB3B] group-hover:border-[#9ACB3B]/40 transition-colors">
+                      <Icon className="w-6 h-6" />
                     </div>
-
-                    <div className="flex-1">
-                      <h3 className="text-xl lg:text-2xl mb-3" style={{ color: 'var(--vigos-blue-dark)' }}>
-                        {segment.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {segment.description}
-                      </p>
+                    <div className="flex items-center gap-2 font-mono text-xs text-white/40">
+                      <span>{segment.code}</span>
+                      <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-[#9ACB3B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </div>
                   </div>
 
-                  {/* Decorative Corner */}
-                  <div 
-                    className="absolute bottom-4 right-4 w-12 h-12 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                    style={{ 
-                      background: 'var(--vigos-green-accent)',
-                      clipPath: 'polygon(100% 0, 0% 100%, 100% 100%)'
-                    }}
-                  />
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                    {segment.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-400 leading-relaxed font-sans">
+                    {segment.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-white/5 font-mono text-[11px] text-white/30 flex items-center justify-between">
+                  <span>DISPONIBILIDADE</span>
+                  <span className="text-[#9ACB3B]">ALTA PERFORMANCE</span>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

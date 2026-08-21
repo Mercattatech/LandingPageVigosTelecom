@@ -1,4 +1,4 @@
-import { Award, Users, Briefcase, MapPin } from "lucide-react";
+import { Award, Users, Briefcase, MapPin, CheckCircle2 } from "lucide-react";
 import client1Logo from "figma:asset/b58c156cd623b0d67b0492e5b58b0c81cdcc9e65.png";
 import client2Logo from "figma:asset/53479e5748e9005a7761cd25a37f372d31de8dcf.png";
 import client3Logo from "figma:asset/a7a5f166863b837f9b63177057359cf398fa2414.png";
@@ -9,180 +9,114 @@ const stats = [
   {
     icon: Award,
     value: "15+",
-    label: "anos de experiência em telecomunicações"
+    unit: "ANOS",
+    label: "Experiência sólida no mercado de telecomunicações"
   },
   {
     icon: Users,
     value: "600+",
-    label: "clientes ativos confiam na Vigos"
+    unit: "EMPRESAS",
+    label: "Clientes ativos confiando em nossas soluções"
   },
   {
     icon: Briefcase,
-    value: "1.898",
-    label: "projetos implementados com sucesso"
+    value: "1.898+",
+    unit: "PROJETOS",
+    label: "Implementações de infraestrutura e PABX entregues"
   },
   {
     icon: MapPin,
     value: "100%",
-    label: "cobertura em todo o estado de São Paulo"
+    unit: "COBERTURA",
+    label: "Atendimento dedicado em todo o estado de SP"
   }
+];
+
+const clients = [
+  { logo: client1Logo, name: "Cliente Corporativo 1" },
+  { logo: client2Logo, name: "Cliente Corporativo 2" },
+  { logo: client3Logo, name: "Cliente Corporativo 3" },
+  { logo: client4Logo, name: "Cliente Corporativo 4" },
+  { logo: client5Logo, name: "Cliente Corporativo 5" }
 ];
 
 export function SocialProofSection() {
   return (
-    <section 
-      className="py-24 relative overflow-hidden"
-      style={{ 
-        background: 'linear-gradient(135deg, var(--vigos-blue-primary) 0%, var(--vigos-blue-dark) 100%)'
-      }}
-    >
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-1" style={{ background: 'var(--vigos-green-accent)' }} />
-      <div className="absolute bottom-0 left-0 w-full h-1" style={{ background: 'var(--vigos-green-accent)' }} />
+    <section id="clients" className="py-28 bg-[#070B12] relative overflow-hidden text-white border-t border-white/10">
+      
+      {/* Background Lighting */}
+      <div 
+        className="absolute bottom-0 right-1/4 w-[600px] h-[400px] rounded-full blur-[160px] opacity-15 pointer-events-none"
+        style={{ background: "var(--vigos-green-accent)" }}
+      />
 
-      {/* Tech Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(var(--vigos-tech-lines) 1px, transparent 1px), linear-gradient(90deg, var(--vigos-tech-lines) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}/>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl mb-4 text-white">
-            Autoridade e experiência comprovadas
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Números que refletem nosso compromisso com excelência e inovação
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+          <div>
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#9ACB3B] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#9ACB3B]" />
+              Autoridade & Track Record
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              Resultados validados pelo mercado
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-gray-400 max-w-md font-sans">
+            Números que comprovam nossa dedicação técnica, estabilidade operacional e compromisso com o cliente.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div 
-                key={index}
-                className="text-center"
-              >
-                <div 
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6"
-                  style={{ 
-                    background: 'rgba(154, 203, 59, 0.2)',
-                    border: '2px solid var(--vigos-green-accent)',
-                    boxShadow: '0 0 20px rgba(154, 203, 59, 0.3)'
-                  }}
-                >
-                  <Icon className="h-10 w-10" style={{ color: 'var(--vigos-green-accent)' }} />
-                </div>
-
-                <div 
-                  className="text-6xl lg:text-7xl mb-3"
-                  style={{ 
-                    fontWeight: '900',
-                    background: 'linear-gradient(135deg, #ffffff 0%, var(--vigos-green-accent) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    textShadow: '0 0 30px rgba(154, 203, 59, 0.5), 0 0 60px rgba(154, 203, 59, 0.3)',
-                    filter: 'drop-shadow(0 0 10px rgba(154, 203, 59, 0.4))'
-                  }}
-                >
-                  {stat.value}
-                </div>
-
-                <div className="text-lg text-white/80 leading-relaxed">
-                  {stat.label}
-                </div>
+        {/* Big Numbers Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {stats.map((stat, index) => (
+            <div 
+              key={index}
+              className="p-8 bg-[#0C121E]/90 border border-white/10 hover:border-[#9ACB3B]/60 transition-all duration-300 group"
+            >
+              <div className="font-mono text-[11px] text-[#9ACB3B] tracking-widest uppercase mb-2">
+                {stat.unit}
               </div>
-            );
-          })}
+
+              <div 
+                className="text-5xl sm:text-6xl font-black text-white mb-4 tracking-tight group-hover:text-[#9ACB3B] transition-colors"
+                style={{
+                  textShadow: "0 0 30px rgba(154, 203, 59, 0.3)"
+                }}
+              >
+                {stat.value}
+              </div>
+
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-sans">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* Client Logos Section (Placeholder) */}
-        <div className="mt-20 pt-12 border-t" style={{ borderColor: 'var(--vigos-tech-lines)' }}>
-          <p className="text-center text-white/70 mb-8 text-lg">
-            Empresas que confiam na Vigos Soluções
+        {/* Client Logos Carousel/Grid */}
+        <div className="pt-8 border-t border-white/10">
+          <p className="text-center font-mono text-xs uppercase tracking-widest text-white/50 mb-10">
+            Empresas que operam com a tecnologia Vigos Telecom:
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {/* Cliente 1 */}
-            <div 
-              className="h-64 rounded-lg flex items-center justify-center p-12 transition-all duration-300 hover:scale-105"
-              style={{ 
-                background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <img 
-                src={client1Logo} 
-                alt="Cliente 1" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-
-            {/* Cliente 2 */}
-            <div 
-              className="h-64 rounded-lg flex items-center justify-center p-12 transition-all duration-300 hover:scale-105"
-              style={{ 
-                background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <img 
-                src={client2Logo} 
-                alt="Cliente 2" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-
-            {/* Cliente 3 */}
-            <div 
-              className="h-64 rounded-lg flex items-center justify-center p-12 transition-all duration-300 hover:scale-105"
-              style={{ 
-                background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <img 
-                src={client3Logo} 
-                alt="Cliente 3" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-
-            {/* Cliente 4 */}
-            <div 
-              className="h-64 rounded-lg flex items-center justify-center p-12 transition-all duration-300 hover:scale-105"
-              style={{ 
-                background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <img 
-                src={client4Logo} 
-                alt="Cliente 4" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-
-            {/* Cliente 5 */}
-            <div 
-              className="h-64 rounded-lg flex items-center justify-center p-12 transition-all duration-300 hover:scale-105"
-              style={{ 
-                background: 'transparent',
-                border: '1px solid rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              <img 
-                src={client5Logo} 
-                alt="Cliente 5" 
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {clients.map((client, i) => (
+              <div 
+                key={i}
+                className="h-24 sm:h-28 p-4 bg-[#0C121E]/60 border border-white/10 hover:border-[#9ACB3B]/50 transition-all duration-300 flex items-center justify-center group"
+              >
+                <img 
+                  src={client.logo} 
+                  alt={client.name} 
+                  className="max-h-12 sm:max-h-14 max-w-full object-contain filter grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
           </div>
         </div>
+
       </div>
     </section>
   );

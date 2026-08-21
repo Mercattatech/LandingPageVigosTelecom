@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="none">
+  <!-- BTG text -->
+  <text x="0" y="52" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="58" fill="#ffffff" letter-spacing="-2">BTG</text>
+  <!-- Pactual text below -->
+  <text x="2" y="72" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="18" fill="#ffffff" letter-spacing="4">PACTUAL</text>
+</svg>
